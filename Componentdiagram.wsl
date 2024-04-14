@@ -5,18 +5,15 @@ title "Диаграмма компонентов для компьютерной
 package "Math Game" {
     [Game Controller]
     [Level Controller]
-    [Question Generator]
-    [Player Manager]
+    [Question Bank]
     [UI]
     [Data Storage]
 }
 
 [Game Controller] --> [Level Controller] : Controls
-[Game Controller] --> [Player Manager] : Manages
 [Game Controller] --> [UI] : Updates
-[Level Controller] --> [Question Generator] : Generates
-[Question Generator] --> [Data Storage] : Accesses
-[Player Manager] --> [Data Storage] : Accesses
+[Level Controller] --> [Question Bank] : Generates
+[Question Bank] --> [Data Storage] : Accesses
 [UI] --> [Data Storage] : Accesses
 
 @enduml
