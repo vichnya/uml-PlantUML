@@ -1,0 +1,42 @@
+@startuml
+
+title "UML-диаграмма для компьютерной игры по математике"
+
+class Game {
+    - story: string
+    - levels: Level[]
+    + start(): void
+    + end(): void
+}
+
+abstract class Level {
+    - questions: Question[]
+    + abstract playLevel(): void
+}
+
+class MultipleChoiceLevel {
+    + playLevel(): void
+}
+
+class TextEntryLevel {
+    + playLevel(): void
+}
+
+class TimedLevel {
+    + playLevel(): void
+}
+
+class Question {
+    - questionText: string
+    - correctAnswer: string
+    + getQuestionText(): string
+    + getCorrectAnswer(): string
+}
+
+Game --> Level
+Level <|-- MultipleChoiceLevel
+Level <|-- TextEntryLevel
+Level <|-- TimedLevel
+Level *-- Question
+
+@enduml
