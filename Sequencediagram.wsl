@@ -1,0 +1,39 @@
+@startuml
+
+title "Диаграмма последовательности для компьютерной игры по математике для детей"
+
+actor Player
+participant Game
+participant Level
+participant MultipleChoiceLevel
+participant TextEntryLevel
+participant TimedLevel
+
+Player -> Game: Начать игру
+Game -> Game: Запустить сюжет
+Game -> Level: Начать уровень
+alt Уровень выбора ответа
+    Level -> MultipleChoiceLevel: Начать уровень
+    MultipleChoiceLevel -> Player: Отобразить вопрос и варианты ответа
+    Player -> MultipleChoiceLevel: Выбрать ответ
+    MultipleChoiceLevel -> Level: Проверить ответ
+else Уровень ввода текста
+    Level -> TextEntryLevel: Начать уровень
+    TextEntryLevel -> Player: Отобразить вопрос
+    Player -> TextEntryLevel: Ввести ответ
+    TextEntryLevel -> Level: Проверить ответ
+else Уровень с ограничением времени
+    Level -> TimedLevel: Начать уровень
+    TimedLevel -> Player: Отобразить вопрос
+    Player -> TimedLevel: Ввести ответ в течение времени
+    TimedLevel -> Level: Проверить ответ
+end
+Level -> Game: Завершить уровень
+Game -> Game: Проверить условие завершения сюжета
+alt Сюжет завершен?
+    Game -> Player: Отобразить завершение игры
+else Сюжет не завершен
+    Game -> Game: Перейти к следующему уровню или шагу сюжета
+end
+
+@enduml
