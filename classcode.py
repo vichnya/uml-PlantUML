@@ -1,6 +1,3 @@
-from abc import ABC, abstractmethod
-import random
-
 class Game:
     def __init__(self, story):
         self.story = story
@@ -15,11 +12,10 @@ class Game:
             level.play_level()
         print("Игра завершилась.")
 
-class Level(ABC):
+class Level:
     def __init__(self, questions):
         self.questions = questions
 
-    @abstractmethod
     def play_level(self):
         pass
 
