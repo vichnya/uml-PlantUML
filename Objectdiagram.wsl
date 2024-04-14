@@ -1,0 +1,27 @@
+@startuml
+
+title Компьютерная игра по математике для детей
+
+object Game {
+    player = Player
+    levelController = LevelController
+    questionBank = QuestionBank
+}
+
+object Player {
+    name = "PlayerName"
+}
+
+object LevelController {
+    currentLevel = "Easy"
+}
+
+object QuestionBank {
+    // Банк вопросов
+}
+
+Game --> Player : Игрок
+Game --> LevelController : Контроллер уровней
+Game --> QuestionBank : Банк вопросов
+
+@enduml
